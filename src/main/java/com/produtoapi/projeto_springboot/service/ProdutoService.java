@@ -38,4 +38,8 @@ public class ProdutoService {
     public Optional<ProdutoModel> finfById(Long id) {
         return produtoRepository.findById(id);
     }
+
+    public List<ProdutoModel> salvarLista(List<ProdutoModel> produtoModels){
+        return produtoRepository.saveAll(produtoModels);
+    }
 }
