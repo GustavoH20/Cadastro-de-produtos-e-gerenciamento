@@ -62,4 +62,20 @@ public class ProdutoService {
     public List<ProdutoModel> findByNomeEndingWith(String suffix){
         return produtoRepository.findByNomeEndingWith(suffix);
     }
+
+    public List<ProdutoModel> findByPreco(Double preco){
+        return produtoRepository.findByPreco(preco);
+    }
+
+    public List<ProdutoModel> findByPrecoGreaterThan(Double preco){
+        return produtoRepository.findByPrecoGreaterThan(preco);
+    }
+
+    public List<ProdutoModel> findByPrecoLessThan(Double preco){
+        return produtoRepository.findByPrecoLessThan(preco);
+    }
+
+    public Double buscarTotalPreco(){
+        return produtoRepository.findTotalPreco();
+    }
 }
