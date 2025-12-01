@@ -39,7 +39,27 @@ public class ProdutoService {
         return produtoRepository.findById(id);
     }
 
-    public List<ProdutoModel> salvarLista(List<ProdutoModel> produtoModels){
+    public List<ProdutoModel> salvarLista(List<ProdutoModel> produtoModels) {
         return produtoRepository.saveAll(produtoModels);
+    }
+
+    public List<ProdutoModel> findBynome(String nome) {
+        return produtoRepository.findBynome(nome);
+    }
+
+    public List<ProdutoModel> findByNomeContainig(String nome) {
+        return produtoRepository.findByNomeContaining(nome);
+    }
+
+    public List<ProdutoModel> findByNomeAndStatus(String nome, String status) {
+        return produtoRepository.findByNomeAndStatus(nome, status);
+    }
+
+    public List<ProdutoModel> findByNomeStartingWith(String prefix){
+        return produtoRepository.findByNomeStartingWith(prefix);
+    }
+
+    public List<ProdutoModel> findByNomeEndingWith(String suffix){
+        return produtoRepository.findByNomeEndingWith(suffix);
     }
 }

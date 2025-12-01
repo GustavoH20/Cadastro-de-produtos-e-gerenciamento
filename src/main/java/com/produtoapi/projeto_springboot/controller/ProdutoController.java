@@ -11,7 +11,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/produtos")
-public class ProdutoController {
+public class ProdutoController  {
 
     @Autowired
     private ProdutoService produtoService;
@@ -27,22 +27,47 @@ public class ProdutoController {
     }
 
     @PutMapping("{id}")
-    public ProdutoModel atualizar(@PathVariable Long id, @RequestBody ProdutoModel produtoModel){
-        return produtoService.atualizar(id,produtoModel);
+    public ProdutoModel atualizar(@PathVariable Long id, @RequestBody ProdutoModel produtoModel) {
+        return produtoService.atualizar(id, produtoModel);
     }
 
     @DeleteMapping("{id}")
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Long id) {
         produtoService.deletar(id);
     }
 
     @GetMapping("{id}")
-    public Optional<ProdutoModel> finfById(@PathVariable Long id){
+    public Optional<ProdutoModel> finfById(@PathVariable Long id) {
         return produtoService.finfById(id);
     }
 
     @PostMapping("/salvarLista")
-    public List<ProdutoModel> salvarLista(@RequestBody List<ProdutoModel> produtoModels){
+    public List<ProdutoModel> salvarLista(@RequestBody List<ProdutoModel> produtoModels) {
         return produtoService.salvarLista(produtoModels);
+    }
+
+    @GetMapping("/buscarPorNome")
+    public List<ProdutoModel> buscarPorNome(@RequestParam String valor) {
+        return produtoService.findBynome(valor);
+    }
+
+    @GetMapping("/buscarPorNomeContendo")
+    public List<ProdutoModel> buscarPorNomeContendo(@RequestParam String valor) {
+        return produtoService.findByNomeContainig(valor);
+    }
+
+    @GetMapping("/buscarPorNomeEStatus")
+    public List<ProdutoModel> buscarPorNomeEStatus(@RequestParam String nome, @RequestParam String status) {
+        return produtoService.findByNomeAndStatus(nome, status);
+    }
+
+    @GetMapping("/buscarPorNomeComecandoCom")
+    public List<ProdutoModel> buscarPorNomeComecandoCom(@RequestParam String valor){
+        return produtoService.findByNomeEndingWith(valor);
+    }
+
+    @GetMapping("/buscarPorNomeTerminandoCom")
+    public List<ProdutoModel> buscarPorNomeTerminandoCom(@RequestParam String valor){
+        return produtoService.findByNomeStartingWith(valor);
     }
 }
