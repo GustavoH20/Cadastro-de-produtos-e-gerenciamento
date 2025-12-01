@@ -23,4 +23,8 @@ public interface ProdutoRepository extends JpaRepository<ProdutoModel, Long> {
  @Query("SELECT SUM(p.preco) FROM ProdutoModel p")
     Double findTotalPreco();
 
+ List<ProdutoModel> findByQuantidade(Integer quantidade);
+ List<ProdutoModel> findByQuantidadeLessThan(Integer quantidade);
+ List<ProdutoModel> findByQuantidadeGreaterThan(Integer quantidade);
+
 }

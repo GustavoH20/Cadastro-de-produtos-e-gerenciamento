@@ -90,4 +90,19 @@ public class ProdutoController  {
     public Double buscarTotalPreco(){
         return produtoService.buscarTotalPreco();
     }
+
+    @GetMapping("/buscarPorQuantidade")
+    public List<ProdutoModel> buscarPorQuantidade(@RequestParam Integer valor){
+        return produtoService.findByQuantidade(valor);
+    }
+
+    @GetMapping("/buscarPorQuantidadeMenorQue")
+    public List<ProdutoModel> buscarQuantidadeMenorQue(@RequestParam Integer valor){
+        return produtoService.findByQuantidadeLessThan(valor);
+    }
+
+    @GetMapping("/buscarPorQuantidadeMaiorQue")
+    public List<ProdutoModel> buscarPorQuantidadeMaiorQue(@RequestParam Integer valor){
+        return produtoService.findByQuantidadeGreateThan(valor);
+    }
 }
