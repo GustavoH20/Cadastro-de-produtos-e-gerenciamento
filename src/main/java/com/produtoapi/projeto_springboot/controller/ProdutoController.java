@@ -105,4 +105,30 @@ public class ProdutoController  {
     public List<ProdutoModel> buscarPorQuantidadeMaiorQue(@RequestParam Integer valor){
         return produtoService.findByQuantidadeGreateThan(valor);
     }
+
+    @GetMapping("/buscarPorStatus")
+    public List<ProdutoModel> buscarPorStatua(@RequestParam(required = false) String valor){
+        return produtoService.findByStatus(valor);
+    }
+
+    @GetMapping("/buscarPorStatusNulos")
+    public List<ProdutoModel> buscarPorStatusNulos(){
+        return produtoService.findByStatusIsNull();
+    }
+
+    @GetMapping("/buscarPorPrecoEStatus")
+    public List<ProdutoModel> buscarPorPrecoEStatus(@RequestParam Double preco, @RequestParam String status){
+        return produtoService.findByPrecoAndStatus(preco, status);
+    }
+
+    @GetMapping("/contarTotalDeProdutos")
+    public Long contarTotalDeProdutos(){
+        return produtoService.count();
+    }
+
+    //Se não passar nada, volta todos os produtos com status padrão, neste caso será "DISPONIVEL"
+    @GetMapping("/buscarPorStatusPadrao")
+    public List<ProdutoModel> buscarPorStatusPadrao(@RequestParam (defaultValue = "Disponível") String valor){
+        return produtoService.findByStatus(valor);
+    }
 }
