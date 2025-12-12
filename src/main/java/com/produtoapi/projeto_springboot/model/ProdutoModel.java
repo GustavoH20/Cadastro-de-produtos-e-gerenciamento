@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
 public class ProdutoModel {
 
     //Gera id automaticamente
