@@ -37,7 +37,7 @@ public class ProdutoController  {
     }
 
     @GetMapping("{id}")
-    public Optional<ProdutoModel> finfById(@PathVariable Long id) {
+    public Optional<ProdutoModel> findById(@PathVariable Long id) {
         return produtoService.finfById(id);
     }
 

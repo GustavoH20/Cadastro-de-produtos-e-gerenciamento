@@ -16,7 +16,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Api de cadastro e gerenciamento de produtos")
                         .version("v1")
-                        .description("Esta é uma api para gerenciar seus produtos")
+                        .description("Seu software de gerenciar produtos")
                         .termsOfService("http://swagger.io/terms/")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
